@@ -136,7 +136,13 @@ def get_requirements_from_tag(tag: Tag) -> List[Requirement]:
 
 
 def get_deprecated_status_from_tag(tag: Tag) -> bool:
-    return False  # TODO
+    """Determine if a mod has been deprecated based on its description."""
+    is_deprecated = False
+    tag_text = tag.get_text().replace('\n', ' ')
+    if (re.search(r'[Uu]se .*? instead(?! of)(?! if)', tag_text) is not None or
+            re.search(r'[Nn]o longer supported', tag_text) is not None):
+        is_deprecated = True
+    return is_deprecated
 
 
 def table_to_list(table: Tag, section: str, id_base: int) -> List[Mod]:
