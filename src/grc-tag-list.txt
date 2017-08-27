@@ -1,0 +1,170 @@
+Animation
+Actions
+Combat
+Melee
+One-handed
+Two-handed
+Ranged
+Bow
+Crossbow
+Movement
+Female
+Male
+Idle
+Audio
+Ambient
+SFX
+Music
+Voice
+Books and Scrolls
+Books
+Scrolls
+Spell Books
+Bug Fixes
+General
+Specific
+Characters
+Body
+Face
+Hair
+Clothing
+Jewelry
+Armour
+Shields
+Creatures
+Mounts
+Companions
+Humans
+Tweaks
+Weapons
+Magic
+Spells
+Crafting
+Alchemy
+Ingridients
+Smithery
+Ingots
+Leather
+Collectables, Treasure Hunts, and Puzzles
+Cheats and God items
+Dungeons
+Vanilla
+New content
+ENB Preset
+Gameplay Effects and Changes
+Guilds/Factions
+Immersion
+Items
+Enchantments
+Miscellaneous
+Modders Resources and Tutorials
+Models
+NPC
+Textures
+Objects
+Overhauls
+Patches
+Quests
+Races
+Classes
+Birthsigns
+Save Games
+Shouts
+Skills
+Leveling
+Stealth
+User Interface
+Utilities
+Videos and Trailers
+Visuals and Graphics
+World
+Cities, Towns, Villages
+Mercantiles (shops, stores, inns, taverns, etc)
+Buildings
+Player Homes
+Castles, Palaces, Mansions, and Estates
+Environment
+Forts, Ruins, and Abandoned Structures
+Landscape
+New Lands
+Locations
+Attributes
+Chargen
+Companion/Follower Friendly
+Compilation
+Enderal Compatible
+Faction: College of Winterhold
+Faction: Companions
+Faction: Dark Brotherhood
+Faction: Dawnguard
+Faction: Thieves Guild
+Faction: Volkihar
+Official
+Overhaul
+Performance Optimization
+Replacer
+Solstheim
+Total Conversion
+Balance
+Cheating
+Fair and balanced
+Unbalanced
+Bodyslide Preset
+CBBE Bodybase
+Seraphim Bodybase
+SevenBase Bodybase
+UNP Bodybase
+UNPB Bodybase
+Components
+Classes component
+Guilds / Factions
+Leveled Lists
+Lighting
+New models
+New textures
+Poses
+Races - Modified
+Races - New
+Scripted Events
+Video
+Content and realism
+Anime
+Extreme violence/gore
+Humor, Joke or Just for Fun
+Lore-Friendly
+Not Lore-Friendly
+Not Safe For Work
+Nudity
+Saved games
+Sexy/Skimpy
+Translation
+Unrealistic
+Language
+Czech
+English
+French
+German
+Hungarian
+Italian
+Japanese
+Other languages
+Polish
+Russian
+Spanish
+Armour & Shields
+NPC Trainers
+NPC Vendors
+NPCs
+Plants
+Foliage
+Dawnguard
+Dragonborn
+Hearthfire
+SKSE
+Resources
+Modder's Resource
+Non-Playable Resource
+Tutorials for Modders
+Tutorials for Players
+Utilities for Modders
+Utilities for Players
