@@ -57,34 +57,34 @@ Crafting.Smithery.Ingridients.Leather
 Creatures
 Creatures.Mounts
 Faction
-Faction.College of Winterhold
+Faction.College_of_Winterhold
 Faction.Companions
-Faction.Dark Brotherhood
+Faction.Dark_Brotherhood
 Faction.Dawnguard
-Faction.Thieves Guild
+Faction.Thieves_Guild
 Faction.Volkihar
 Gameplay
 Gameplay.Balanced
-Gameplay.Effects and Changes
+Gameplay.Effects_and_Changes
 Gameplay.Immersion
 Gameplay.Immersion.Lore-Friendly
 Gameplay.Immersion.Realism
-Gameplay.Leveled Lists
+Gameplay.Leveled_Lists
 Gameplay.Leveling
-Gameplay.New Content
+Gameplay.New_Content
 Gameplay.Overhaul
-Gameplay.Save Games
+Gameplay.Save_Games
 Gameplay.Scripted
-Gameplay.User Interface
+Gameplay.User_Interface
 Graphics
-Graphics.ENB Preset
+Graphics.ENB_Preset
 Graphics.Lighting
 Graphics.Models
 Graphics.Overhaul
 Graphics.Textures
 Items
-Items.Cheats and God items
-Items.Collectables_Treasure Hunts
+Items.Cheats_and_God_items
+Items.Collectables_Treasure_Hunts
 Items.Weapons
 Items.Weapons.One-handed
 Items.Weapons.Ranged
@@ -117,16 +117,16 @@ MI.Tutorials
 MI.Unrealistic
 MI.Utilities
 MI.Vanilla
-MI.Videos and Trailers
+MI.Videos_and_Trailers
 Miscellaneous
 Miscellaneous.Anime
 Miscellaneous.Humor
-Not Safe For Work
-Not Safe For Work.Extreme violence/gore
-Not Safe For Work.Nudity
-Not Safe For Work.Sexy/Skimpy
+Not_Safe_For_Work
+Not_Safe_For_Work.Extreme_violence/gore
+Not_Safe_For_Work.Nudity
+Not_Safe_For_Work.Sexy/Skimpy
 Patches
-Patches.Bug Fixes
+Patches.Bug_Fixes
 Patches.Performance
 Requirements
 Requirements.Dawnguard
@@ -141,8 +141,8 @@ World
 World.Buildings
 World.Buildings.Castles_Palaces_Mansions_Estates
 World.Buildings.Forts_Ruins_Abandoned_Structures
-World.Buildings.Mercantiles (shops_stores_inns_taverns)
-World.Buildings.Player Homes
+World.Buildings.Mercantiles_(shops_stores_inns_taverns)
+World.Buildings.Player_Homes
 World.Cities_Towns_Villages
 World.Environment
 World.Environment.Foliage
