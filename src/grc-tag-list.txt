@@ -1,170 +1,156 @@
 Animation
-Actions
-Combat
-Melee
-One-handed
-Two-handed
-Ranged
-Bow
-Crossbow
-Movement
-Female
-Male
-Idle
+Animation.Actions
+Animation.Combat
+Animation.Combat.Melee
+Animation.Combat.Ranged
+Animation.Idle
+Animation.Magic
+Animation.Movement
+Animation.Movement.Sneak
 Audio
-Ambient
-SFX
-Music
-Voice
-Books and Scrolls
+Audio.Ambient
+Audio.Music
+Audio.Overhaul
+Audio.SFX
+Audio.Voice
 Books
-Scrolls
-Spell Books
-Bug Fixes
-General
-Specific
+Books.Scrolls
+Books.Skill
+Books.Spell
 Characters
-Body
-Face
-Hair
-Clothing
-Jewelry
-Armour
-Shields
-Creatures
-Mounts
-Companions
-Humans
-Tweaks
-Weapons
-Magic
-Spells
+Characters.Armour
+Characters.Armour.Female
+Characters.Armour.Male
+Characters.Armour.Shields
+Characters.Attributes
+Characters.Body
+Characters.Body.Face
+Characters.Body.Hair
+Characters.Classes
+Characters.Clothing
+Characters.Clothing.Female
+Characters.Clothing.Jewelry
+Characters.Clothing.Male
+Characters.NPC
+Characters.NPC.Followers
+Characters.NPC.Trainers
+Characters.NPC.Vendors
+Characters.Poses
+Characters.Races
+Combat
+Combat.Items
+Combat.Items.Melee
+Combat.Items.Melee.One-handed
+Combat.Items.Melee.Two-handed
+Combat.Items.Ranged
+Combat.Items.Ranged.Bow
+Combat.Items.Ranged.Crossbow
+Combat.Magic
+Combat.Tweaks
 Crafting
-Alchemy
-Ingridients
-Smithery
-Ingots
-Leather
-Collectables, Treasure Hunts, and Puzzles
-Cheats and God items
-Dungeons
-Vanilla
-New content
-ENB Preset
-Gameplay Effects and Changes
-Guilds/Factions
-Immersion
+Crafting.Alchemy
+Crafting.Alchemy.Ingridients
+Crafting.Smithery
+Crafting.Smithery.Ingridients
+Crafting.Smithery.Ingridients.Ingots
+Crafting.Smithery.Ingridients.Leather
+Creatures
+Creatures.Mounts
+Faction
+Faction.College of Winterhold
+Faction.Companions
+Faction.Dark Brotherhood
+Faction.Dawnguard
+Faction.Thieves Guild
+Faction.Volkihar
+Gameplay
+Gameplay.Balanced
+Gameplay.Effects and Changes
+Gameplay.Immersion
+Gameplay.Immersion.Lore-Friendly
+Gameplay.Immersion.Realism
+Gameplay.Leveled Lists
+Gameplay.Leveling
+Gameplay.New Content
+Gameplay.Overhaul
+Gameplay.Save Games
+Gameplay.Scripted
+Gameplay.User Interface
+Graphics
+Graphics.ENB Preset
+Graphics.Lighting
+Graphics.Models
+Graphics.Overhaul
+Graphics.Textures
 Items
-Enchantments
-Miscellaneous
-Modders Resources and Tutorials
-Models
-NPC
-Textures
-Objects
-Overhauls
-Patches
-Quests
-Races
-Classes
-Birthsigns
-Save Games
-Shouts
-Skills
-Leveling
-Stealth
-User Interface
-Utilities
-Videos and Trailers
-Visuals and Graphics
-World
-Cities, Towns, Villages
-Mercantiles (shops, stores, inns, taverns, etc)
-Buildings
-Player Homes
-Castles, Palaces, Mansions, and Estates
-Environment
-Forts, Ruins, and Abandoned Structures
-Landscape
-New Lands
-Locations
-Attributes
-Chargen
-Companion/Follower Friendly
-Compilation
-Enderal Compatible
-Faction: College of Winterhold
-Faction: Companions
-Faction: Dark Brotherhood
-Faction: Dawnguard
-Faction: Thieves Guild
-Faction: Volkihar
-Official
-Overhaul
-Performance Optimization
-Replacer
-Solstheim
-Total Conversion
-Balance
-Cheating
-Fair and balanced
-Unbalanced
-Bodyslide Preset
-CBBE Bodybase
-Seraphim Bodybase
-SevenBase Bodybase
-UNP Bodybase
-UNPB Bodybase
-Components
-Classes component
-Guilds / Factions
-Leveled Lists
-Lighting
-New models
-New textures
-Poses
-Races - Modified
-Races - New
-Scripted Events
-Video
-Content and realism
-Anime
-Extreme violence/gore
-Humor, Joke or Just for Fun
-Lore-Friendly
-Not Lore-Friendly
-Not Safe For Work
-Nudity
-Saved games
-Sexy/Skimpy
-Translation
-Unrealistic
+Items.Cheats and God items
+Items.Collectables_Treasure Hunts
+Items.Weapons
+Items.Weapons.One-handed
+Items.Weapons.Ranged
+Items.Weapons.Two-handed
 Language
-Czech
-English
-French
-German
-Hungarian
-Italian
-Japanese
-Other languages
-Polish
-Russian
-Spanish
-Armour & Shields
-NPC Trainers
-NPC Vendors
-NPCs
-Plants
-Foliage
-Dawnguard
-Dragonborn
-Hearthfire
-SKSE
-Resources
-Modder's Resource
-Non-Playable Resource
-Tutorials for Modders
-Tutorials for Players
-Utilities for Modders
-Utilities for Players
+Language.Czech
+Language.English
+Language.French
+Language.German
+Language.Hungarian
+Language.Italian
+Language.Japanese
+Language.Other
+Language.Polish
+Language.Russian
+Language.Spanish
+Language.Translation
+Magic
+Magic.Birthsigns
+Magic.Enchantments
+Magic.Shouts
+Magic.Spells
+Magic.StandingStones
+MI.Compilation
+MI.Dirty
+MI.Official
+MI.Replacer
+MI.Resources
+MI.Tutorials
+MI.Unrealistic
+MI.Utilities
+MI.Vanilla
+MI.Videos and Trailers
+Miscellaneous
+Miscellaneous.Anime
+Miscellaneous.Humor
+Not Safe For Work
+Not Safe For Work.Extreme violence/gore
+Not Safe For Work.Nudity
+Not Safe For Work.Sexy/Skimpy
+Patches
+Patches.Bug Fixes
+Patches.Performance
+Requirements
+Requirements.Dawnguard
+Requirements.Dragonborn
+Requirements.Hearthfire
+Requirements.SKSE
+Skills
+Skills.Magic
+Skills.Stealth
+Skills.Warrior
+World
+World.Buildings
+World.Buildings.Castles_Palaces_Mansions_Estates
+World.Buildings.Forts_Ruins_Abandoned_Structures
+World.Buildings.Mercantiles (shops_stores_inns_taverns)
+World.Buildings.Player Homes
+World.Cities_Towns_Villages
+World.Environment
+World.Environment.Foliage
+World.Environment.Foliage.Plants
+World.Environment.Overhaul
+World.Landscape
+World.Locations
+World.Locations.Dungeons
+World.Objects
+World.Quests
+World.Solstheim
