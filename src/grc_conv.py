@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Convert the GEMS HTML index to YAML."""
 
+import copy
 import re
 
 from argparse import ArgumentParser
@@ -22,9 +23,35 @@ REQ_MAP = {
     'SKSE': (None, 'SKSE'),
 }
 
+REQ_VARIANTS = [
+    '',
+    'DB',
+    'DG',
+    'DG + DB',
+    'DG + HF',
+    'DG + HF + DB',
+    'HF',
+    'HF + DB',
+    'SKSE',
+    'SKSE + DB',
+    'SKSE + DG',
+    'SKSE + DG + DB',
+    'SKSE + DG + HF',
+    'SKSE + DG + HF + DB',
+    'SKSE + HF',
+    'SKSE + HF + DB',
+]
+
 
 class BadEntryException(Exception):
     """Thrown when a table entry is invalid."""
+
+
+def strip_reqs(string):
+    """Remove all requirement tags from a string."""
+    for req in REQ_VARIANTS:
+        string = string.replace(f'[{req}]', '')
+    return string.strip()
 
 
 def get_media_from_tag(tag: Tag) -> Media:
@@ -73,11 +100,26 @@ def get_webpages_from_tag(tag: Tag) -> Webpages:
 
 
 def get_description_from_tag(tag: Tag) -> str:
-    return ''  # TODO
+    """Get the mod's description."""
+    tag = copy.copy(tag)  # deepcopy tag since we're gonna edit it
+    spans = tag.find_all('span')
+    for span in spans:
+        span.extract()  # remove the span and its content from tag
+    description = strip_reqs(tag.get_text())
+    return description
 
 
 def get_notes_from_tag(tag: Tag) -> List[str]:
-    return []  # TODO
+    """Get a list of notes from the mod's description."""
+    spans = tag.find_all('span')
+    notes = []
+    for span in spans:
+        span_text = span.get_text()
+        if span_text in REQ_VARIANTS:
+            continue
+        note = span_text.replace('**', '').strip()
+        notes.append(note)
+    return notes
 
 
 def get_requirements_from_tag(tag: Tag) -> List[Requirement]:
@@ -93,6 +135,10 @@ def get_requirements_from_tag(tag: Tag) -> List[Requirement]:
     return requirements
 
 
+def get_deprecated_status_from_tag(tag: Tag) -> bool:
+    return False  # TODO
+
+
 def table_to_list(table: Tag, section: str, id_base: int) -> List[Mod]:
     """Convert an HTML table into a list of Mods."""
     mods = []
@@ -102,9 +148,7 @@ def table_to_list(table: Tag, section: str, id_base: int) -> List[Mod]:
             tag_column_1 = row.find('td', 'col1')
             tag_column_2 = row.find('td', 'col2')
             tag_column_3 = row.find('td', 'col3')
-            if tag_column_1 is not None \
-               and tag_column_2 is not None \
-               and tag_column_3 is not None:
+            if tag_column_1 is not None and tag_column_2 is not None and tag_column_3 is not None:
                 webpages = get_webpages_from_tag(tag_column_2)
                 requirements = get_requirements_from_tag(tag_column_3)
 
@@ -117,7 +161,9 @@ def table_to_list(table: Tag, section: str, id_base: int) -> List[Mod]:
                     get_media_from_tag(tag_column_1),
                     Oldrim(True, webpages, requirements),
                     Sse(False, Webpages(None, None, None, []), []),
-                    [], False, False
+                    [],
+                    get_deprecated_status_from_tag(tag_column_3),
+                    False
                 )
 
                 mods.append(mod)
@@ -152,21 +198,29 @@ def get_data_from_html(html: str) -> List[Mod]:
 
 def convert(input_file: str, output_file: str) -> None:
     """Actually do the conversion from HTML to YAML."""
+    log.info(f'Reading HTML from {input_file}')
     with open(input_file, 'r') as in_h:
         html = in_h.read()
 
+    log.info('Extracting mod data')
     data = get_data_from_html(html)
+    log.info(f'Loaded {len(data)} mods.')
 
+    log.info('Building YAML database from mod data')
     yaml_str = yaml.dump(data)
-
     yaml_str = yaml_str.replace('- !!python/object:grc_mod.Wrapper\n ', '-')
     yaml_str = yaml_str.replace(' !!python/object:grc_mod.Wrapper', '')
 
+    log.info('Injecting DLC info')
     with open('dlc.yml', 'r') as dlc_h:
         dlc_str = dlc_h.read()
+    yaml_str = dlc_str + '\n' + yaml_str
+    log.info(f'Built database. (size: {len(yaml_str.encode("utf8"))})')
 
+    log.info(f'Saving database to {output_file}')
     with open(output_file, 'w') as out_h:
-        out_h.write(dlc_str + '\n' + yaml_str)
+        out_h.write(yaml_str)
+    log.info('Done.')
 
 
 def main() -> None:
@@ -180,4 +234,7 @@ def main() -> None:
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except Exception as exc:  # pylint: disable=W0703
+        log.critical(exc)

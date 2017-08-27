@@ -74,6 +74,6 @@ class Mod(NamedTuple):
     media: Media
     oldrim: Oldrim
     sse: Sse
-    tags: List[str] = []
+    tags: List[str] = []  # A list of strings
     deprecated: bool = False  # Whether this mod has been replaced
     entry_verified: bool = False  # Whether this entry was checked by a human
