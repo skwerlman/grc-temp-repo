@@ -110,9 +110,13 @@ Magic.Spells
 Magic.StandingStones
 MI.Compilation
 MI.Dirty
+MI.ENB
+MI.ENB.DLL
 MI.Official
 MI.Replacer
 MI.Resources
+MI.SKSE
+MI.SKSE.DLL
 MI.Tutorials
 MI.Unrealistic
 MI.Utilities
@@ -128,11 +132,6 @@ Not_Safe_For_Work.Sexy/Skimpy
 Patches
 Patches.Bug_Fixes
 Patches.Performance
-Requirements
-Requirements.Dawnguard
-Requirements.Dragonborn
-Requirements.Hearthfire
-Requirements.SKSE
 Skills
 Skills.Magic
 Skills.Stealth
