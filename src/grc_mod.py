@@ -42,6 +42,7 @@ class Requirement(NamedTuple):
 
     modid: Union[int, None]  # The modid of the required mod, or None if N/A
     name: str  # The name of the required mod
+    optional: bool  # If true, the mod will work without the requirement
 
 
 @yaml_serializable

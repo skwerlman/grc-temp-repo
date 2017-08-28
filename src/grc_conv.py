@@ -131,7 +131,7 @@ def get_requirements_from_tag(tag: Tag) -> List[Requirement]:
         if class_ is not None:
             class_ = class_[0]
         if class_ in REQ_MAP:
-            requirements.append(Requirement(*REQ_MAP[class_]))
+            requirements.append(Requirement(*REQ_MAP[class_], False))
     return requirements
 
 
