@@ -194,7 +194,7 @@ def get_data_from_html(html: str) -> List[Mod]:
     tables = []
     section_number = 0
     id_base = 4
-    for table in soup.select('#acc2 > div.inner.shown > div.inner > table'):
+    for table in soup.select('div.inner > table'):
         data = table_to_list(
             table,
             sections[section_number],
