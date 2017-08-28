@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """Convert the GEMS HTML index to YAML."""
 
 import copy
@@ -19,7 +19,7 @@ from zenlog import log
 REQ_MAP = {
     'DG': (1, 'Dawnguard'),
     'HF': (2, 'Hearthfire'),
-    'DB': (3, 'Draonborn'),
+    'DB': (3, 'Dragonborn'),
     'SKSE': (None, 'SKSE'),
 }
 
@@ -47,7 +47,7 @@ class BadEntryException(Exception):
     """Thrown when a table entry is invalid."""
 
 
-def strip_reqs(string):
+def strip_reqs(string: str) -> str:
     """Remove all requirement tags from a string."""
     for req in REQ_VARIANTS:
         string = string.replace(f'[{req}]', '')
@@ -205,7 +205,7 @@ def get_data_from_html(html: str) -> List[Mod]:
 def convert(input_file: str, output_file: str) -> None:
     """Actually do the conversion from HTML to YAML."""
     log.info(f'Reading HTML from {input_file}')
-    with open(input_file, 'r') as in_h:
+    with open(input_file, 'r', encoding='utf8') as in_h:
         html = in_h.read()
 
     log.info('Extracting mod data')
@@ -218,13 +218,13 @@ def convert(input_file: str, output_file: str) -> None:
     yaml_str = yaml_str.replace(' !!python/object:grc_mod.Wrapper', '')
 
     log.info('Injecting DLC info')
-    with open('dlc.yml', 'r') as dlc_h:
+    with open('dlc.yml', 'r', encoding='utf8') as dlc_h:
         dlc_str = dlc_h.read()
     yaml_str = dlc_str + '\n' + yaml_str
     log.info(f'Built database. (size: {len(yaml_str.encode("utf8"))})')
 
     log.info(f'Saving database to {output_file}')
-    with open(output_file, 'w') as out_h:
+    with open(output_file, 'w', encoding='utf8') as out_h:
         out_h.write(yaml_str)
     log.info('Done.')
 

@@ -61,6 +61,7 @@ class Sse(NamedTuple):
     is_sse: bool  # If true, the mod has an SSE version
     webpages: Webpages
     requirements: List[Requirement]
+    console_compat: bool = False  # If true, this mod can be used on a console
 
 
 @yaml_serializable
