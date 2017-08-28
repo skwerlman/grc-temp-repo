@@ -5,7 +5,7 @@ import copy
 import re
 
 from argparse import ArgumentParser
-from typing import List
+from typing import List, Tuple
 
 from bs4 import BeautifulSoup
 from bs4.element import Tag
@@ -145,10 +145,14 @@ def get_deprecated_status_from_tag(tag: Tag) -> bool:
     return is_deprecated
 
 
-def table_to_list(table: Tag, section: str, id_base: int) -> List[Mod]:
+def table_to_list(
+        table: Tag,
+        section: str,
+        id_base: int
+        ) -> Tuple[List[Mod], int]:
     """Convert an HTML table into a list of Mods."""
     mods = []
-    modid = id_base + 1
+    modid = id_base
     for row in table.find_all('tr'):
         try:
             tag_column_1 = row.find('td', 'col1')
@@ -178,7 +182,7 @@ def table_to_list(table: Tag, section: str, id_base: int) -> List[Mod]:
         except BadEntryException as exc:
             log.error(exc)
 
-    return mods
+    return (mods, modid)
 
 
 def get_data_from_html(html: str) -> List[Mod]:
@@ -186,17 +190,17 @@ def get_data_from_html(html: str) -> List[Mod]:
     soup = BeautifulSoup(html, 'html.parser')
 
     sections = [x.getText().strip() for x in soup.find_all('h5')]
-    id_bases = []
-    for section in sections:
-        id_bases.append(int(section[:3]) * 1000)
 
     tables = []
     section_number = 0
+    id_base = 4
     for table in soup.select('#acc2 > div.inner.shown > div.inner > table'):
-        tables += table_to_list(
+        data = table_to_list(
             table,
             sections[section_number],
-            id_bases[section_number])
+            id_base)
+        tables += data[0]
+        id_base = data[1]
         section_number += 1
 
     return tables
