@@ -35,7 +35,6 @@ Current Roadmap
 				- nexus
 				- steam
 				- bethesda
-
 - **Website** via GitHub
 	- Front end
 		- basic list display
@@ -47,15 +46,21 @@ Current state
 -------------
 
 **DLC list**
+
 DLCs extracted, waiting for tags
+
 [dlc list](src/dlc.yml)
 
 **Mod list**
+
 Original GEMS mod list extracted, waiting for tags and verification
+
 [modlist](out/modlist.yml)
 
 **Tag list**
+
 Tag list converted to xml format
+
 [taglist](src/taglist.xml)
 
 Cat:
