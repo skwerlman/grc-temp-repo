@@ -1,5 +1,5 @@
-GRC
-===
+GEMS Recreation Committee - GRC
+===============================
 
 [-link to website-](https://github.com/skwerlman/grc-temp-repo/)
 
@@ -13,55 +13,40 @@ cd src
 Current Roadmap
 ---------------
 
-- **Tools for development**
-	- Database
-		- import mods
-			- manually
-			- nexus
-			- steam
-			- bethesda
-		- export mod data
-			- human readable
-			- \[in format for web\]
-		- assign tags to mods, based on tag list
-			- nexus
-			- steam
-			- bethesda
-	- Tags
-		- add / delete / sort
-			- extend list, if needed
-		- edit
-			- pair \[GRC\] tags with
-				- nexus
-				- steam
-				- bethesda
-- **Website** via GitHub
-	- Front end
-		- basic list display
-		- basic filtering
-	- Back end
-		- \[Whatever backend needs\]
+- [ ] **Tools for development**
+	- [ ] Database [modlist](out/modlist.yml) [dlc list](src/dlc.yml)
+		- [x] extraxt DLCs and original modlist
+		- [ ] import mods
+			- [ ] manually
+			- [ ] nexus
+			- [ ] steam
+			- [ ] bethesda
+		- [ ] export mod data
+			- [ ] human readable
+			- [ ] \[in format for web\]
+		- [ ] assign tags to mods, based on tag list
+			- [ ] nexus
+			- [ ] steam
+			- [ ] bethesda
+	- [ ] Tags [taglist](src/taglist.xml)
+		- [ ] add / delete / sort
+			- [ ] extend list, if needed
+		- [ ] edit
+			- [ ] pair \[GRC\] tags with
+				- [ ] nexus
+				- [ ] steam
+				- [ ] bethesda
+- [ ] **Website** via GitHub
+	- [ ] Front end
+		- [ ] basic list display
+		- [ ] basic filtering
+	- [ ] Back end
+		- [ ] GitHub pages up
+		- [ ] Generated page
+- [ ] **Misc**
+	- [ ] Set up a proper GH org
+		- [ ] Decide on a name
 
-Current state
--------------
-
-**DLC list**
-
-DLCs extracted, waiting for tags
-
-[dlc list](src/dlc.yml)
-
-**Mod list**
-
-Original GEMS mod list extracted, waiting for tags and verification
-
-[modlist](out/modlist.yml)
-
-**Tag list**
-
-Tag list converted to xml format
-
-[taglist](src/taglist.xml)
 
 Cat:
 
