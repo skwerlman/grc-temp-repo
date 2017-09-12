@@ -56,11 +56,11 @@ def strip_reqs(string: str) -> str:
 
 def get_media_from_tag(tag: Tag) -> Media:
     """Create a Media object from one or more <a> tags."""
-    media_tags = tag.select('a')
+    media_tags: List[Tag] = tag.select('a')
     images = []
     videos = []
     for media_tag in media_tags:
-        url = media_tag.get('href')
+        url: str = media_tag.get('href')
         if re.search(r'(?:png|jpe?g|gif|resizedimage)$', url):
             images.append(url)
         elif re.search(r'(?:youtube|youtu\.be|ajax%2Fmodvideo)', url):
@@ -72,7 +72,7 @@ def get_media_from_tag(tag: Tag) -> Media:
 
 def get_name_from_tag(tag: Tag) -> str:
     """Get the name of the mod."""
-    link = tag.find('a')
+    link: Tag = tag.find('a')
     if link is None:
         raise BadEntryException(f'No link in tag:\n{tag}')
     return link.get_text()
@@ -80,10 +80,10 @@ def get_name_from_tag(tag: Tag) -> str:
 
 def get_webpages_from_tag(tag: Tag) -> Webpages:
     """Get the mod's linked homepage."""
-    link = tag.find('a')
+    link: Tag = tag.find('a')
     if link is None:
         raise BadEntryException(f'No link in tag:\n{tag}')
-    url = link.get('href')
+    url: str = link.get('href')
     steam_link = None
     nexus_link = None
     bethesda_link = None
@@ -102,19 +102,19 @@ def get_webpages_from_tag(tag: Tag) -> Webpages:
 def get_description_from_tag(tag: Tag) -> str:
     """Get the mod's description."""
     tag = copy.copy(tag)  # deepcopy tag since we're gonna edit it
-    spans = tag.find_all('span')
+    spans: List[Tag] = tag.find_all('span')
     for span in spans:
         span.extract()  # remove the span and its content from tag
-    description = strip_reqs(tag.get_text())
+    description: str = strip_reqs(tag.get_text())
     return description
 
 
 def get_notes_from_tag(tag: Tag) -> List[str]:
     """Get a list of notes from the mod's description."""
-    spans = tag.find_all('span')
-    notes = []
+    spans: List[Tag] = tag.find_all('span')
+    notes: List[str] = []
     for span in spans:
-        span_text = span.get_text()
+        span_text: str = span.get_text()
         if span_text in REQ_VARIANTS:
             continue
         note = span_text.replace('**', '').strip()
@@ -124,41 +124,39 @@ def get_notes_from_tag(tag: Tag) -> List[str]:
 
 def get_requirements_from_tag(tag: Tag) -> List[Requirement]:
     """Get a list of requirements from the mod's description."""
-    spans = tag.find_all('span')
-    requirements = []
+    spans: List[Tag] = tag.find_all('span')
+    requirements: List[Requirement] = []
     for span in spans:
-        class_ = span.get('class')
-        if class_ is not None:
-            class_ = class_[0]
-        if class_ in REQ_MAP:
-            requirements.append(Requirement(*REQ_MAP[class_], False))
+        clss: str = span.get('class')
+        if clss is not None:
+            clss = clss[0]
+        if clss in REQ_MAP:
+            requirements.append(Requirement(*REQ_MAP[clss], False))
     return requirements
 
 
 def get_deprecated_status_from_tag(tag: Tag) -> bool:
     """Determine if a mod has been deprecated based on its description."""
     is_deprecated = False
-    tag_text = tag.get_text().replace('\n', ' ')
+    tag_text: str = tag.get_text().replace('\n', ' ')
     if (re.search(r'[Uu]se .*? instead(?! of)(?! if)', tag_text) is not None or
             re.search(r'[Nn]o longer supported', tag_text) is not None):
         is_deprecated = True
     return is_deprecated
 
 
-def table_to_list(
-        table: Tag,
-        section: str,
-        id_base: int
-        ) -> Tuple[List[Mod], int]:
+def table_to_list(table: Tag, section: str,
+                  id_base: int) -> Tuple[List[Mod], int]:
     """Convert an HTML table into a list of Mods."""
-    mods = []
+    mods: List[Mod] = []
     modid = id_base
+    row: Tag
     for row in table.find_all('tr'):
         try:
-            tag_column_1 = row.find('td', 'col1')
-            tag_column_2 = row.find('td', 'col2')
-            tag_column_3 = row.find('td', 'col3')
-            if tag_column_1 is not None and tag_column_2 is not None and tag_column_3 is not None:
+            tag_column_1: Tag = row.find('td', 'col1')
+            tag_column_2: Tag = row.find('td', 'col2')
+            tag_column_3: Tag = row.find('td', 'col3')
+            if tag_column_1 and tag_column_2 and tag_column_3:
                 webpages = get_webpages_from_tag(tag_column_2)
                 requirements = get_requirements_from_tag(tag_column_3)
 
@@ -180,7 +178,7 @@ def table_to_list(
 
                 modid += 1
         except BadEntryException as exc:
-            log.error(exc)
+            log.error(str(exc))
 
     return (mods, modid)
 
@@ -189,11 +187,12 @@ def get_data_from_html(html: str) -> List[Mod]:
     """Convert the HTML tables in the index to a single list of Mods."""
     soup = BeautifulSoup(html, 'html.parser')
 
-    sections = [x.getText().strip() for x in soup.find_all('h5')]
+    sections = [x.get_text().strip() for x in soup.find_all('h5')]
 
-    tables = []
+    tables: List[Mod] = []
     section_number = 0
     id_base = 4
+    table: Tag
     for table in soup.select('div.inner > table'):
         data = table_to_list(
             table,
@@ -217,7 +216,7 @@ def convert(input_file: str, output_file: str) -> None:
     log.info(f'Loaded {len(data)} mods.')
 
     log.info('Building YAML database from mod data')
-    yaml_str = yaml.dump(data)
+    yaml_str: str = yaml.dump(data)
     yaml_str = yaml_str.replace('- !!python/object:grc_mod.Wrapper\n ', '-')
     yaml_str = yaml_str.replace(' !!python/object:grc_mod.Wrapper', '')
 
@@ -240,11 +239,13 @@ def main() -> None:
     parser.add_argument('output', type=str)
 
     args = parser.parse_args()
-    convert(args.input, args.output)
+    input_file: str = args.input
+    output_file: str = args.output
+    convert(input_file, output_file)
 
 
 if __name__ == '__main__':
     try:
         main()
     except Exception as exc:  # pylint: disable=W0703
-        log.critical(exc)
+        log.critical(str(exc))

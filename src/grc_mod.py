@@ -3,15 +3,15 @@
 # Disable warnings about 'too few class methods'
 # pylint: disable=R0903
 
-from typing import List, NamedTuple, Union
+from typing import List, NamedTuple, Type, Union
 
 
-def yaml_serializable(cls):
+def yaml_serializable(cls: Type[NamedTuple]):
     """Make a NamedTuple serializable by PyYAML."""
     class Wrapper(object):
         """Provides the __dict__ property for annotated objects."""
 
-        def __init__(self, *args):
+        def __init__(self, *args) -> None:
             self.__wrapped = cls(*args)
             self.__dict__ = dict(self.__wrapped._asdict())
 
@@ -79,3 +79,30 @@ class Mod(NamedTuple):
     tags: List[str] = []  # A list of strings
     deprecated: bool = False  # Whether this mod has been replaced
     entry_verified: bool = False  # Whether this entry was checked by a human
+
+
+@yaml_serializable
+class MiniOldrim(NamedTuple):
+    """A stripped-down Oldrim object."""
+
+    is_oldrim: bool
+
+
+@yaml_serializable
+class MiniSse(NamedTuple):
+    """A stripped-down Sse object."""
+
+    is_sse: bool
+    console_compat: bool = False
+
+
+@yaml_serializable
+class MiniMod(NamedTuple):
+    """A stripped-down mod for transfer over networks."""
+
+    modid: int
+    name: str
+    gems_category: Union[str, None]
+    oldrim: MiniOldrim
+    sse: MiniSse
+    tags: List[str]
