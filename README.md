@@ -44,8 +44,10 @@ Current Roadmap
 		- [ ] GitHub pages up
 		- [ ] Generated page
 - [ ] **Misc**
-	- [ ] Set up a proper GH org
-		- [ ] Decide on a name
+	- [x] Set up a proper GH org
+		- [x] Decide on a name
+	- [ ] Separate work into repos
+
 
 
 Cat:
