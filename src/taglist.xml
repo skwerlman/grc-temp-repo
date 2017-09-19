@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<taglist>
+<taglist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<tag id="1" name="Animation">
 		<beth xsi:nil="true" />
 		<gems xsi:nil="true" />
